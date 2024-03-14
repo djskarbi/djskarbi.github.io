@@ -1,0 +1,24 @@
+{
+  "name": "Ruby and Node.js",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "VARIANT": "3.0.5",
+      "NODE_VERSION": "14"
+    }
+  },
+  "runArgs": [ "-u", "node" ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "ruby.lint": {
+      "rubocop": {
+        "useBundler": true
+      }
+    }
+  },
+  "extensions": [
+    "rebornix.ruby"
+  ]
+}
+
