@@ -4,6 +4,7 @@
     "dockerfile": "Dockerfile",
     "context": "..",
   },
+  "postStartCommand": "bundle exec jekyll serve --watch --force_polling --verbose --livereload bundler exec jekyll serve --livereload --host 0.0.0.0",
   "runArgs": [ "-u", "node" ],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
