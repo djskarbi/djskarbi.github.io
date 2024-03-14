@@ -14,7 +14,7 @@
       }
     }
   },
-  "extensions": [
+  "customizations/vscode/extensions": [
     "shopify.ruby-lsp"
   ]
 }

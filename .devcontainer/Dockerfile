@@ -3,17 +3,15 @@ ARG NODE_VERSION="14"
 FROM ruby:${VARIANT}
 
 ARG DEV_PACKAGES="build-essential"
-ARG GEM_PACKAGES="bundler jekyll jekyll-theme-chirpy"
 
-# Optionally set a non-root user
-RUN groupadd --gid 1000 node \
-    && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+COPY Gemfile .
 
 # hadolint ignore=SC2086,DL3008
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install --no-install-recommends -y ${DEV_PACKAGES} && \
-    gem install ${GEM_PACKAGES} && \
+    gem install bundler && \
+    bundle install -j2 --retry 3 && \
     apt-get remove --purge -y $DEV_PACKAGES && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -24,6 +22,10 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y nodejs git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Optionally set a non-root user
+RUN groupadd --gid 1000 node \
+    && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
