@@ -3,6 +3,7 @@ ARG NODE_VERSION="14"
 FROM ruby:${VARIANT}
 
 ARG DEV_PACKAGES="build-essential"
+ARG GEM_PACKAGES="bundler jekyll jekyll-theme-chirpy"
 
 # Optionally set a non-root user
 RUN groupadd --gid 1000 node \
