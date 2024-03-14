@@ -13,7 +13,7 @@ RUN groupadd --gid 1000 node \
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install --no-install-recommends -y ${DEV_PACKAGES} && \
-    gem install bundler jekyll && \
+    gem install ${GEM_PACKAGES} && \
     apt-get remove --purge -y $DEV_PACKAGES && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
