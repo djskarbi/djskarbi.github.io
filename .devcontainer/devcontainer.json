@@ -3,10 +3,6 @@
   "build": {
     "dockerfile": "Dockerfile",
     "context": "..",
-    "args": {
-      "VARIANT": "3.0.5",
-      "NODE_VERSION": "14"
-    }
   },
   "runArgs": [ "-u", "node" ],
   "settings": {
@@ -18,7 +14,7 @@
     }
   },
   "extensions": [
-    "rebornix.ruby"
+    "shopify.ruby-lsp"
   ]
 }
 

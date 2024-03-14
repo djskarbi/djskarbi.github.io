@@ -5,7 +5,9 @@ FROM ruby:${VARIANT}
 # Update the package lists and install Node.js
 RUN apt-get update && \
     curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
-    apt-get install -y nodejs
+    apt-get install --no-install-recommends -y nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Optionally set a non-root user
 RUN groupadd --gid 1000 node \
