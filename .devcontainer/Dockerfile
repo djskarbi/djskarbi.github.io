@@ -4,13 +4,6 @@ FROM ruby:${VARIANT}
 
 ARG DEV_PACKAGES="build-essential"
 
-# Update the package lists and install Node.js
-RUN apt-get update && \
-    curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
-    apt-get install --no-install-recommends -y nodejs && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 # Optionally set a non-root user
 RUN groupadd --gid 1000 node \
     && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
@@ -21,6 +14,13 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y ${DEV_PACKAGES} && \
     gem install bundler jekyll && \
     apt-get remove --purge -y $DEV_PACKAGES && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Update the package lists and install Node.js
+RUN apt-get update && \
+    curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
+    apt-get install --no-install-recommends -y nodejs git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
