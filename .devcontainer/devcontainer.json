@@ -5,6 +5,7 @@
     "context": ".."
   },
   "postStartCommand": "nohup bash -c 'bundle exec jekyll serve --watch --force_polling --livereload --port 4000 &'",
+  "forwardPorts": [4000],
   "runArgs": [ "-u", "node" ],
   "customizations": {
     "vscode": {
