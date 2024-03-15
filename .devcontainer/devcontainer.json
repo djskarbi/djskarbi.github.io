@@ -9,12 +9,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash",
-        "ruby.lint": {
-          "rubocop": {
-            "useBundler": true
-          }
-        }
+        "terminal.integrated.shell.linux": "/bin/bash"
       }
     }
   }
