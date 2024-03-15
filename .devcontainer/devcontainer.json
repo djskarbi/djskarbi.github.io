@@ -2,20 +2,24 @@
   "name": "Ruby and Node.js",
   "build": {
     "dockerfile": "Dockerfile",
-    "context": "..",
+    "context": ".."
   },
-  "postStartCommand": "bundle exec jekyll serve --watch --force_polling --verbose --livereload bundler exec jekyll serve --livereload --host 0.0.0.0",
+  "postStartCommand": "bundle exec jekyll serve --watch --force_polling --verbose --livereload",
   "runArgs": [ "-u", "node" ],
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash",
-    "ruby.lint": {
-      "rubocop": {
-        "useBundler": true
-      }
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "ruby.lint": {
+          "rubocop": {
+            "useBundler": true
+          }
+        }
+      },
+      "extensions": [
+        "shopify.ruby-lsp"
+      ]
     }
-  },
-  "customizations/vscode/extensions": [
-    "shopify.ruby-lsp"
-  ]
+  }
 }
 
