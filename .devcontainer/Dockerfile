@@ -18,8 +18,9 @@ RUN apt-get update && \
 
 # Update the package lists and install Node.js
 RUN apt-get update && \
+    apt-get install --no-install-recommends -y curl gnupg git && \
     curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
-    apt-get install --no-install-recommends -y nodejs git && \
+    apt-get install --no-install-recommends -y nodejs && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
